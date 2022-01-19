@@ -1,0 +1,18 @@
+<mat-card class="wrapper" (click)="openDetails()">
+  <h4>{{ad?.typeOfRental}}</h4>
+  <img src="https://via.placeholder.com/350x65">
+  <p style="margin-top: 5px">{{ad?.topics}}</p>
+  <label><strong>Description</strong></label>
+  <p>{{ad?.description}}</p>
+  <label><strong>Location</strong></label>
+  <p>{{ad?.country}}, {{ad?.city}}-{{ad?.postalCode}}</p>
+  <label><strong>Price Per Month: {{ad?.pricePerMonth}}€</strong></label>
+  <div class="d-flex flex-wrap justify-content-end">
+    <ng-container *ngIf="bookingAllowed; else noBooking">
+      <button mat-raised-button (click)="bookAd()">Book</button>
+    </ng-container>
+    <ng-template #noBooking>
+      <button mat-raised-button matTooltip="Login to submit a booking request">Book</button>
+    </ng-template>
+  </div>
+</mat-card>

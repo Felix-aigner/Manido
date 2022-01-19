@@ -1,0 +1,62 @@
+<div>
+  <h2>Neue Werbefläche</h2>
+  <form [formGroup]="werbeflaecheForm" class="row">
+    <mat-form-field class="col-6">
+      <mat-label>Type of Rental</mat-label>
+      <mat-select formControlName="typeOfRental">
+        <mat-option *ngFor="let type of typeOptions" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="col-12 input-field" >
+      <mat-label>Topics</mat-label>
+      <textarea  matInput type="text" formControlName="topics"></textarea>
+    </mat-form-field>
+    <mat-form-field class="col-12 input-field" >
+      <mat-label>Description</mat-label>
+      <textarea  matInput type="text" formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="col-7 input-field" >
+      <mat-label>City</mat-label>
+      <input matInput type="text" formControlName="city">
+    </mat-form-field>
+    <mat-form-field class="col-7 input-field" >
+      <mat-label>Postal Code</mat-label>
+      <input matInput type="number" formControlName="postalCode">
+    </mat-form-field>
+    <mat-form-field class="col-12 input-field" >
+      <mat-label>Address</mat-label>
+      <textarea  matInput type="text" formControlName="addressLine"></textarea>
+    </mat-form-field>
+    <div class="col-7 mt-1">
+      <mat-checkbox formControlName="timelyRestricted">Advertisement Timely Restricted</mat-checkbox>
+    </div>
+    <mat-form-field class="col-6 input-field mt-1">
+      <mat-label>Start of Rental</mat-label>
+      <input matInput type="date" formControlName="startOfRental">
+    </mat-form-field>
+    <ng-container *ngIf="this.werbeflaecheForm.get('timelyRestricted')?.value == true">
+      <mat-form-field class="col-6 input-field mt-1">
+        <mat-label>End of Rental</mat-label>
+        <input matInput type="date" formControlName="endOfRental">
+      </mat-form-field>
+    </ng-container>
+    <div class="col-7 mt-1">
+      <mat-checkbox formControlName="changeWhileActive">Allow Advertisement Changes while active</mat-checkbox>
+    </div>
+    <mat-form-field class="col-7 input-field mt-1">
+      <mat-label>Price per Month (EUR)</mat-label>
+      <input matInput type="number" formControlName="startOfRental">
+    </mat-form-field>
+    <mat-form-field class="col-12 input-field" >
+      <mat-label>Additional Conditions</mat-label>
+      <textarea  matInput type="text" formControlName="additionalConditions"></textarea>
+    </mat-form-field>
+    <div class="d-flex justify-content-end col-12">
+      <button mat-raised-button color="warn" class="ml-3" (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="primary" class="ml-3" (click)="submit()">Create</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+<h3>Book this Advertisement</h3>
+
+<form [formGroup]="bookingForm" class="row">
+  <mat-form-field class="col-12 input-field mt-1">
+    <mat-label>Start of Rental</mat-label>
+    <input matInput type="date" formControlName="from">
+  </mat-form-field>
+  <mat-form-field class="col-12 input-field mt-1">
+    <mat-label>End of Rental</mat-label>
+    <input matInput type="date" formControlName="to">
+  </mat-form-field>
+  <div class="col-12 d-flex justify-content-between">
+    <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="confirm()">Book</button>
+  </div>
+</form>

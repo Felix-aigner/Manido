@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-between">
+  <h1>Werbeflächen</h1>
+  <div class="createButton">
+    <ng-container *ngIf="currUser$ | async as user; else noUser">
+      <button mat-button (click)="createAd(user)">Create a new Advertisement</button>
+    </ng-container>
+    <ng-template #noUser>
+      <button mat-button matTooltip="Login to create an advertisement">Create a new Advertisement</button>
+    </ng-template>
+  </div>
+</div>
+<div *ngIf="advertisements$ | async as ads" class="d-flex flex-wrap justify-content-center">
+  <ng-container *ngFor="let ad of ads">
+    <app-werbeflaeche-card
+      [ad]="ad"
+      [bookingAllowed]="loggedIn"
+    ></app-werbeflaeche-card>
+  </ng-container>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-button (click)="onToggleSidenav()">
+      <mat-icon aria-hidden="false">list</mat-icon>
+    </button>
+  </div>
+      <h1>Manido</h1>
+    <div class=" col-8 flex-nowrap d-flex justify-content-center">
+      <button mat-button [routerLink]="'/home'">Home</button>
+      <button mat-button [routerLink]="'/werbeflaechen'">Werbeflächen</button>
+      <ng-container *ngIf="loggedIn$ | async as loggedIn; else notLoggedIn">
+        <button mat-button (click)="openDialog('Profil')">{{'Profil'}}</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-template #notLoggedIn>
+        <button mat-button (click)="openDialog('Login')">{{'Login'}}</button>
+      </ng-template>
+    </div>
+</mat-toolbar>
